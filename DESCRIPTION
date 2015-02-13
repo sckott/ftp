@@ -1,0 +1,13 @@
+Package: ftp
+Type: Package
+Title: FTP client for R
+Description: More about what it does (maybe more than one line)
+Version: 0.0.1.99
+Date: 2015-02-12
+Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
+    email = "myrmecocystus@gmail.com")
+License: MIT + file LICENSE
+LazyData: TRUE
+Imports:
+    RCurl,
+    magrittr

@@ -1,9 +1,2 @@
-#' Pipe operator
-#'
-#' @name %>%
-#' @rdname pipe
-#' @keywords internal
-#' @export
-#' @importFrom magrittr %>%
-#' @usage lhs \%>\% rhs
-NULL
+xl <- function(x) if (!grepl("/$", x)) paste0(x, "/") else x
+

@@ -15,8 +15,7 @@ An ftp client for R
 ## Installation
 
 ```{r eval=FALSE}
-install.packages("devtools")
-devtools::install_github("sckott/ftp")
+devtools::install_github("ropensci/ftp")
 ```
 
 ```{r}

@@ -9,8 +9,7 @@ An ftp client for R
 
 
 ```r
-install.packages("devtools")
-devtools::install_github("sckott/ftp")
+devtools::install_github("ropensci/ftp")
 ```
 
 

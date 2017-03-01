@@ -2,6 +2,7 @@ ftp
 ===
 
 
+[![Build Status](https://travis-ci.org/ropensci/ftp.svg?branch=master)](https://travis-ci.org/ropensci/ftp)
 
 An ftp client for R
 
@@ -33,7 +34,7 @@ list_files(url)[1:10]
 
 ```r
 (x <- ftp("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
-#> <ftp client> 
+#> <ftp client>
 #>   base url: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/
 #>   port: 21
 #>   active/passive: passive

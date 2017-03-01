@@ -9,6 +9,10 @@ ftp_fetch(url, path, verbose = FALSE, ...)
 \arguments{
 \item{url}{(character) URL for the file on the FTP server}
 
+\item{path}{(character) path}
+
+\item{verbose}{(logical) verbose messages}
+
 \item{...}{further args passed on to \pkg{curl}}
 }
 \value{

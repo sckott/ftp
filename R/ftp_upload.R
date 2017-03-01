@@ -2,6 +2,8 @@
 #'
 #' @export
 #' @param url (character) URL for the file on the FTP server
+#' @param path (character) path
+#' @param verbose (logical) verbose messages
 #' @param ... further args passed on to \pkg{curl}
 #' @return string, path to the file on disk
 #' @examples \dontrun{

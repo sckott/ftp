@@ -11,6 +11,8 @@ ftp_list(url, just_list = FALSE, verbose = FALSE, ...)
 
 \item{just_list}{(logical) list files only? default: \code{FALSE}}
 
+\item{verbose}{(logical) verbose messages}
+
 \item{...}{further args passed on to \pkg{curl}}
 }
 \value{

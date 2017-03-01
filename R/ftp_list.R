@@ -3,6 +3,7 @@
 #' @export
 #' @param url (character) URL for the FTP server
 #' @param just_list (logical) list files only? default: \code{FALSE}
+#' @param verbose (logical) verbose messages
 #' @param ... further args passed on to \pkg{curl}
 #' @return a tibble (data.frame)
 #' @examples \dontrun{

@@ -24,7 +24,7 @@
 #' @format NULL
 #' @usage NULL
 #' @examples
-#' (x <- ftp("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
+#' (x <- ftp_client("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
 #' x$pwd()
 #' x$list()
 #'
@@ -37,7 +37,7 @@
 #'
 #' # change port
 #' # x$ftp_port(4567)
-ftp <- function(url) FTPClient$new(url = url)
+ftp_client <- function(url) FTPClient$new(url = url)
 
 # the client
 FTPClient <- R6::R6Class(

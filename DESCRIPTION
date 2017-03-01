@@ -1,8 +1,8 @@
 Package: ftp
 Type: Package
-Title: FTP client for R
-Description: FTP client for R.
-Version: 0.0.3.9140
+Title: File Transfer Protocol (FTP) client for R
+Description: Tools to work with any File Transfer Protocol (FTP) server.
+Version: 0.0.4.9110
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE
@@ -11,7 +11,9 @@ URL: https://github.com/ropensci/ftp
 BugReports: https://github.com/ropensci/ftp/issues
 VignetteBuilder: knitr
 Imports:
+    R6,
     curl,
+    crul,
     data.table,
     tibble
 Suggests:

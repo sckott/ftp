@@ -1,8 +1,10 @@
 #' FTP client for R
 #'
+#' Provides methods for working with FTP servers. This package
+#' doesn't act as a server, only a client.
+#'
 #' @name ftp-package
 #' @aliases ftp
 #' @docType package
-#' @title R FTP client
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
 NULL

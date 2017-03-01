@@ -32,8 +32,10 @@ library('ftp')
 
 ## ftp client
 
+Wraps an R6 method `FTPClient`
+
 ```{r}
-(x <- ftp("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
+(x <- ftp_client("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
 ```
 
 adjust settings

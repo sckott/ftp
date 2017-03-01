@@ -18,13 +18,16 @@
 #' }
 ftp_list <- function(url, just_list = FALSE, verbose = FALSE, ...) {
   hand <- curl::new_handle()
-  curl::handle_setheaders(hand, .list = list(Authorization = "Basic anonymous:myrmecocystus@gmail.com"))
+  curl::handle_setheaders(
+    hand,
+    .list = list(Authorization = "Basic anonymous:myrmecocystus@gmail.com"))
   if (verbose) curl::handle_setopt(hand, verbose = TRUE)
   if (just_list) curl::handle_setopt(hand, dirlistonly = TRUE)
   gg <- curl::curl_fetch_memory(url, handle = hand)
   gg <- rawToChar(gg$content)
   if (just_list) {
-    to_tbl(utils::read.delim(text = x, header = FALSE, stringsAsFactors = FALSE))
+    to_tbl(utils::read.delim(text = gg, header = FALSE,
+                             stringsAsFactors = FALSE))
   } else {
     to_df(parse_files(gg))
   }

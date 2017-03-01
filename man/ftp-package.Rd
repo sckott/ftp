@@ -4,9 +4,10 @@
 \name{ftp-package}
 \alias{ftp-package}
 \alias{ftp}
-\title{R FTP client}
+\title{FTP client for R}
 \description{
-FTP client for R
+Provides methods for working with FTP servers. This package
+doesn't act as a server, only a client.
 }
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}

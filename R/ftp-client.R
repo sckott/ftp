@@ -14,6 +14,12 @@
 #'     \item{\code{cd()}}{
 #'       Change directory
 #'     }
+#'     \item{\code{ftp_port()}}{
+#'       Change ftp port
+#'     }
+#'     \item{\code{set_pasv()}}{
+#'       Change directory
+#'     }
 #'   }
 #' @format NULL
 #' @usage NULL
@@ -63,14 +69,18 @@ FTPClient <- R6::R6Class(
       self$pwd()
     },
 
-    list = function() {
-      ftp_list(xl(self$pwd()))
+    list = function(just_list = FALSE, verbose = FALSE) {
+      ftp_list(xl(self$pwd()), just_list = just_list, verbose = verbose)
     },
 
     get = function(x, disk = NULL, stream = FALSE) {
       "x"
     },
 
-    set_pasv = function(x = FALSE) self$active <- x
+    set_pasv = function(x = FALSE) self$active <- x,
+
+    ftp_port = function(port) {
+      self$port <- port
+    }
   )
 )

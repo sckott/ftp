@@ -18,6 +18,7 @@
 #' }
 ftp_list <- function(url, just_list = FALSE, verbose = FALSE, ...) {
   hand <- curl::new_handle()
+  curl::handle_setheaders(hand, .list = list(Authorization = "Basic anonymous:myrmecocystus@gmail.com"))
   if (verbose) curl::handle_setopt(hand, verbose = TRUE)
   if (just_list) curl::handle_setopt(hand, dirlistonly = TRUE)
   gg <- curl::curl_fetch_memory(url, handle = hand)

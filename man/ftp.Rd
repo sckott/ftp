@@ -22,6 +22,12 @@ ftp client
     \item{\code{cd()}}{
       Change directory
     }
+    \item{\code{ftp_port()}}{
+      Change ftp port
+    }
+    \item{\code{set_pasv()}}{
+      Change directory
+    }
   }
 }
 \examples{

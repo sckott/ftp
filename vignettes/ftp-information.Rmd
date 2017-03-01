@@ -1,0 +1,54 @@
+---
+title: "File Transfer Protocol Info"
+author: "Scott Chamberlain"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+bibliography: bibliography.bib
+vignette: >
+  %\VignetteIndexEntry{File Transfer Protocol Info}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+> Following adapted from <http://slacksite.com/other/ftp.html> and <https://en.wikipedia.org/wiki/File_Transfer_Protocol>
+
+
+FTP is a TCP based service. It utilizes two ports, a 'data' port and a 'command' port (or 'control' port). Traditionally these are port 20 for the data port and port 21 for the command port. The data port is not always on port 20, however.
+
+## Passive vs. Active mode
+
+FTP may run in active or passive mode, which determines how the data connection is established [@slack].
+
+* In **active mode**, the client starts listening for incoming data connections from the server on port M. It sends the FTP command PORT M to inform the server on which port it is listening. The server then initiates a data channel to the client from its port 20, the FTP server data port.
+* In situations where the client is behind a firewall and unable to accept incoming TCP connections, **passive mode** may be used. In this mode, the client uses the control connection to send a PASV command to the server and then receives a server IP address and server port number from the server [@slack, @parker], which the client then uses to open a data connection from an arbitrary client port to the server IP address and server port number received.
+
+## Status codes
+
+The server responds over the control connection with [three-digit status codes](https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes) in ASCII with an optional text message. These status codes are not the same as [HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) - but have broad 
+similarity in that the 1xx, 2xx, etc. series are sort of similar to HTTP status codes.
+
+We don't currently have an implementation of responding appropriately to FTP 
+status codes, but it's on the [to do list](https://github.com/ropensci/ftp/issues/4).
+
+## Login
+
+FTP login utilizes a normal username and password scheme for granting access [@tcpguide].  The username is sent to the server using the USER command, and the password is sent using the PASS command [@tcpguide]. If the information provided by the client is accepted by the server, the server will send a greeting to the client and the session will commence [@tcpguide]. If the server supports it, users may log in without providing login credentials, but the same server may authorize only limited access for such sessions
+
+## Anonymous FTP
+
+A host that provides an FTP service may provide anonymous FTP access [@tcpguide]. Users typically log into the service with an 'anonymous' (lower-case and case-sensitive in some FTP servers) account when prompted for user name. Although users are commonly asked to send their email address instead of a password [@tamara], no verification is actually performed on the supplied data [@rfc1635]. Many FTP hosts whose purpose is to provide software updates will allow anonymous logins [@tamara].
+
+## References 

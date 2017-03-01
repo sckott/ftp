@@ -2,6 +2,7 @@ ftp
 ===
 
 
+
 [![Build Status](https://travis-ci.org/ropensci/ftp.svg?branch=master)](https://travis-ci.org/ropensci/ftp)
 
 An ftp client for R
@@ -20,27 +21,43 @@ devtools::install_github("ropensci/ftp")
 library('ftp')
 ```
 
-## list files
-
-
-```r
-url <- "ftp://ftp.ncdc.noaa.gov/pub/data/noaa/2014/"
-list_files(url)[1:10]
-#> Error in eval(expr, envir, enclos): could not find function "list_files"
-```
-
 ## ftp client
 
 
 ```r
 (x <- ftp("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
-#> <ftp client>
+#> <ftp client> 
 #>   base url: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/
 #>   port: 21
 #>   active/passive: passive
+```
+
+adjust settings
+
+
+```r
+x$ftp_port()
+x$set_pasv()
+```
+
+
+## pwd
+
+
+```r
 x$pwd()
 #> [1] "ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"
 ```
+
+## list files
+
+
+```r
+x$list()
+#> Error in curl::curl_fetch_memory(url, handle = hand): Failure when receiving data from the peer
+```
+
+> note that parsing isn't working totally yet :)
 
 
 ## Meta

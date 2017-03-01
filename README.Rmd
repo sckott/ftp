@@ -12,9 +12,13 @@ knitr::opts_chunk$set(
 
 [![Build Status](https://travis-ci.org/ropensci/ftp.svg?branch=master)](https://travis-ci.org/ropensci/ftp)
 
-An ftp client for R
+An FTP client for R
 
 **not quite ready to use yet**
+
+The File Transfer Protocol (FTP) is a standard network protocol used for the transfer of computer files from a server to a client using the Client–server model on a computer network.
+
+See the ftp info vignette (`ftp-information`) for detailed FTP information.
 
 ## Installation
 
@@ -26,19 +30,33 @@ devtools::install_github("ropensci/ftp")
 library('ftp')
 ```
 
-## list files
-
-```{r}
-url <- "ftp://ftp.ncdc.noaa.gov/pub/data/noaa/2014/"
-list_files(url)[1:10]
-```
-
 ## ftp client
 
 ```{r}
 (x <- ftp("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
+```
+
+adjust settings
+
+```{r eval=FALSE}
+x$ftp_port()
+x$set_pasv()
+```
+
+
+## pwd
+
+```{r}
 x$pwd()
 ```
+
+## list files
+
+```{r}
+x$list()
+```
+
+> note that parsing isn't working totally yet :)
 
 
 ## Meta

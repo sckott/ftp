@@ -1,9 +1,11 @@
-rnoaa
-=====
+ftp
+===
 
 
 
 An ftp client for R
+
+**not quite ready to use yet**
 
 ## Installation
 
@@ -23,8 +25,26 @@ library('ftp')
 ```r
 url <- "ftp://ftp.ncdc.noaa.gov/pub/data/noaa/2014/"
 list_files(url)[1:10]
-#>  [1] "949690-99999-2014.gz" "955810-99999-2014.gz" "956280-99999-2014.gz"
-#>  [4] "956310-99999-2014.gz" "956390-99999-2014.gz" "956570-99999-2014.gz"
-#>  [7] "956740-99999-2014.gz" "957080-99999-2014.gz" "957160-99999-2014.gz"
-#> [10] "958310-99999-2014.gz"
+#> Error in eval(expr, envir, enclos): could not find function "list_files"
 ```
+
+## ftp client
+
+
+```r
+(x <- ftp("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
+#> <ftp client> 
+#>   base url: ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/
+#>   port: 21
+#>   active/passive: passive
+x$pwd()
+#> [1] "ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"
+```
+
+
+## Meta
+
+* Please [report any issues or bugs](https://github.com/ropensci/ftp/issues).
+* License: MIT
+* Get citation information for `ftp` in R doing `citation(package = 'ftp')`
+* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

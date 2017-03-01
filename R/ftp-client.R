@@ -30,7 +30,7 @@
 #' x$set_pasv(FALSE)
 #'
 #' # change port
-#' x$ftp_port(4567)
+#' # x$ftp_port(4567)
 ftp <- function(url) FTPClient$new(url = url)
 
 # the client

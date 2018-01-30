@@ -20,6 +20,12 @@
 #'     \item{\code{set_pasv()}}{
 #'       Change directory
 #'     }
+#'     \item{\code{get()}}{
+#'       Get a file from remote server
+#'     }
+#'     \item{\code{list()}}{
+#'       List files on remote server
+#'     }
 #'   }
 #' @format NULL
 #' @usage NULL
@@ -43,6 +49,15 @@
 #' x$get('ghcnd-states.txt', disk = (f <- tempfile()))
 #' readLines(f, n = 10)
 #' close(file(f))
+#' 
+#' # put a file
+#' x <- ftp_client("ftp://speedtest.tele2.net/")
+#' x$cd('upload')
+#' x$list()
+#' f <- tempfile(fileext = ".txt")
+#' writeLines("foo\nbar\n", con = f)
+#' readLines(f)
+#' res <- x$put(f, TRUE)
 ftp_client <- function(url) FTPClient$new(url = url)
 
 # the client
@@ -75,12 +90,18 @@ FTPClient <- R6::R6Class(
       self$pwd()
     },
 
-    list = function(just_list = FALSE, verbose = FALSE) {
-      ftp_list(xl(self$pwd()), just_list = just_list, verbose = verbose)
+    list = function(just_list = FALSE, messages = FALSE, ...) {
+      ftp_list(xl(self$pwd()), just_list = just_list, 
+        messages = messages, ...)
     },
 
     get = function(x, disk = NULL, stream = FALSE, ...) {
-      ftp_fetch(file.path(self$pwd(), x), disk, ...)
+      ftp_fetch(file.path(self$pwd(), x), disk = disk, stream = stream, 
+        messages = messages, ...)
+    },
+
+    put = function(path, messages = FALSE, ...)  {
+      ftp_upload(self$pwd(), path, messages = messages, ...)
     },
 
     set_pasv = function(x = FALSE) self$active <- x,

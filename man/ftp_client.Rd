@@ -28,6 +28,12 @@ Change ftp port
 \item{\code{set_pasv()}}{
 Change directory
 }
+\item{\code{get()}}{
+Get a file from remote server
+}
+\item{\code{list()}}{
+List files on remote server
+}
 }
 }
 \examples{
@@ -50,4 +56,13 @@ x
 x$get('ghcnd-states.txt', disk = (f <- tempfile()))
 readLines(f, n = 10)
 close(file(f))
+
+# put a file
+x <- ftp_client("ftp://speedtest.tele2.net/")
+x$cd('upload')
+x$list()
+f <- tempfile(fileext = ".txt")
+writeLines("foo\\nbar\\n", con = f)
+readLines(f)
+res <- x$put(f, TRUE)
 }

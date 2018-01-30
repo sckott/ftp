@@ -4,14 +4,14 @@
 \alias{ftp_list}
 \title{List files on an FTP server}
 \usage{
-ftp_list(url, just_list = FALSE, verbose = FALSE, ...)
+ftp_list(url, just_list = FALSE, messages = FALSE, ...)
 }
 \arguments{
 \item{url}{(character) URL for the FTP server}
 
 \item{just_list}{(logical) list files only? Default: \code{FALSE}}
 
-\item{verbose}{(logical) verbose messages. Default: \code{FALSE}}
+\item{messages}{(logical) verbose messages. Default: \code{FALSE}}
 
 \item{...}{further args passed on to \pkg{curl}}
 }

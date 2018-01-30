@@ -4,14 +4,14 @@
 \alias{ftp_upload}
 \title{Upload files to an FTP server}
 \usage{
-ftp_upload(url, path, verbose = FALSE, ...)
+ftp_upload(url, path, messages = FALSE, ...)
 }
 \arguments{
 \item{url}{(character) URL for the file on the FTP server}
 
 \item{path}{(character) path}
 
-\item{verbose}{(logical) verbose messages. Default: \code{FALSE}}
+\item{messages}{(logical) verbose messages. Default: \code{FALSE}}
 
 \item{...}{further args passed on to \pkg{curl}}
 }
@@ -23,7 +23,20 @@ Upload files to an FTP server
 }
 \examples{
 \dontrun{
-file <- tempfile(fileext = ".csv.gz")
-ftp_upload(url = "demo.wftpserver.com", path = file)
+file <- tempfile(fileext = ".csv")
+row.names(mtcars) <- NULL
+write.csv(mtcars, file = file, row.names = FALSE)
+read.csv(file)
+
+(x <- ftp_upload(url = "demo.wftpserver.com", path = file))
+cat(rawToChar(x$headers))
+cat(rawToChar(x$content))
+
+
+file <- tempfile(fileext = ".png")
+row.names(mtcars) <- NULL
+(x <- ftp_upload(url = "ftp://speedtest.tele2.net/upload", path = file))
+cat(rawToChar(x$headers))
+cat(rawToChar(x$content))
 }
 }

@@ -4,14 +4,19 @@
 \alias{ftp_fetch}
 \title{Fetch files from an FTP server}
 \usage{
-ftp_fetch(url, path, verbose = FALSE, ...)
+ftp_fetch(url, disk = NULL, stream = NULL, messages = FALSE, ...)
 }
 \arguments{
 \item{url}{(character) URL for the file on the FTP server}
 
-\item{path}{(character) path}
+\item{disk}{(character) a path to write to. if \code{NULL} (default),
+memory used. See \code{\link[curl:curl_fetch_disk]{curl::curl_fetch_disk()}} for help.}
 
-\item{verbose}{(logical) verbose messages. Default: \code{FALSE}}
+\item{stream}{(character) an R function to determine how to stream
+data. if \code{NULL} (default), memory used. See \code{\link[curl:curl_fetch_stream]{curl::curl_fetch_stream()}}
+for help.}
+
+\item{messages}{(logical) verbose messages. Default: \code{FALSE}}
 
 \item{...}{further args passed on to \pkg{curl}}
 }
@@ -21,11 +26,23 @@ string, path to the file on disk
 \description{
 Fetch files from an FTP server
 }
+\details{
+Only one of \code{disk} or \code{stream} parameters can be passed
+}
 \examples{
 \dontrun{
+url <- "ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/1882.csv.gz"
+
+# disk
 file <- tempfile(fileext = ".csv.gz")
-ftp_fetch("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/1882.csv.gz",
-  path = file)
+ftp_fetch(url, disk = file)
 utils::read.delim(file, sep = ",", nrows = 10, header = FALSE)
+unlink(file) # cleanup
+
+# stream
+lst <- c()
+fun <- function(x) lst <<- c(lst, x)
+ftp_fetch(url, stream = fun)
+lst
 }
 }

@@ -3,7 +3,7 @@
 #' @export
 #' @param url (character) URL for the FTP server
 #' @param just_list (logical) list files only? Default: `FALSE`
-#' @param verbose (logical) verbose messages. Default: `FALSE`
+#' @param messages (logical) verbose messages. Default: `FALSE`
 #' @param ... further args passed on to \pkg{curl}
 #' @return a tibble (i.e., a `data.frame`)
 #' @examples \dontrun{
@@ -16,12 +16,12 @@
 #' ftp_list("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/")
 #' ftp_list("ftp://ftp.ncdc.noaa.gov/pub/data/noaa/2014/")
 #' }
-ftp_list <- function(url, just_list = FALSE, verbose = FALSE, ...) {
+ftp_list <- function(url, just_list = FALSE, messages = FALSE, ...) {
   hand <- curl::new_handle()
   curl::handle_setheaders(
     hand,
     .list = list(Authorization = "Basic anonymous:myrmecocystus@gmail.com"))
-  if (verbose) curl::handle_setopt(hand, verbose = TRUE)
+  if (messages) curl::handle_setopt(hand, verbose = TRUE)
   if (just_list) curl::handle_setopt(hand, dirlistonly = TRUE)
   gg <- curl::curl_fetch_memory(url, handle = hand)
   gg <- rawToChar(gg$content)

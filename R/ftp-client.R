@@ -33,10 +33,16 @@
 #' x$list()
 #'
 #' # turn on active
-#' x$set_pasv(FALSE)
+#' x$set_pasv(TRUE)
+#' x
 #'
 #' # change port
 #' # x$ftp_port(4567)
+#' 
+#' # get a file
+#' x$get('ghcnd-states.txt', disk = (f <- tempfile()))
+#' readLines(f, n = 10)
+#' close(file(f))
 ftp_client <- function(url) FTPClient$new(url = url)
 
 # the client
@@ -73,8 +79,8 @@ FTPClient <- R6::R6Class(
       ftp_list(xl(self$pwd()), just_list = just_list, verbose = verbose)
     },
 
-    get = function(x, disk = NULL, stream = FALSE) {
-      "x"
+    get = function(x, disk = NULL, stream = FALSE, ...) {
+      ftp_fetch(file.path(self$pwd(), x), disk, ...)
     },
 
     set_pasv = function(x = FALSE) self$active <- x,

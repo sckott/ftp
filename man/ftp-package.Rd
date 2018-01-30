@@ -10,5 +10,5 @@ Provides methods for working with FTP servers. This package
 doesn't act as a server, only a client.
 }
 \author{
-Scott Chamberlain \email{myrmecocystus@gmail.com}
+Scott Chamberlain \email{myrmecocystus+r@gmail.com}
 }

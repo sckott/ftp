@@ -15,20 +15,20 @@ ftp client
 }
 \details{
 \strong{Methods}
-  \describe{
-    \item{\code{pwd()}}{
-      Print working directory
-    }
-    \item{\code{cd()}}{
-      Change directory
-    }
-    \item{\code{ftp_port()}}{
-      Change ftp port
-    }
-    \item{\code{set_pasv()}}{
-      Change directory
-    }
-  }
+\describe{
+\item{\code{pwd()}}{
+Print working directory
+}
+\item{\code{cd()}}{
+Change directory
+}
+\item{\code{ftp_port()}}{
+Change ftp port
+}
+\item{\code{set_pasv()}}{
+Change directory
+}
+}
 }
 \examples{
 (x <- ftp_client("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
@@ -40,8 +40,14 @@ x$pwd()
 x$list()
 
 # turn on active
-x$set_pasv(FALSE)
+x$set_pasv(TRUE)
+x
 
 # change port
 # x$ftp_port(4567)
+
+# get a file
+x$get('ghcnd-states.txt', disk = (f <- tempfile()))
+readLines(f, n = 10)
+close(file(f))
 }

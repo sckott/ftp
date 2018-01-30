@@ -2,10 +2,10 @@
 #'
 #' @export
 #' @param url (character) URL for the FTP server
-#' @param just_list (logical) list files only? default: \code{FALSE}
-#' @param verbose (logical) verbose messages
+#' @param just_list (logical) list files only? Default: `FALSE`
+#' @param verbose (logical) verbose messages. Default: `FALSE`
 #' @param ... further args passed on to \pkg{curl}
-#' @return a tibble (data.frame)
+#' @return a tibble (i.e., a `data.frame`)
 #' @examples \dontrun{
 #' ftp_list("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/")
 #'
@@ -39,7 +39,8 @@ parse_files <- function(x) {
     perm <- strex(z, "^[a-z-]+")
     dir <- strex(z, "[0-9]\\s[a-z]+")
     group <- strex(z, "csdb-ops|1005")
-    size <- strex(z, "[0-9]{2,}\\s[A-Za-z]")
+    #size <- strex(z, "[0-9]{2,}")
+    size <- strexg(z, "[0-9]{2,}")[[1]][2]
     date <- strex(z, "[A-Za-z]{3}\\s+[0-9]{1,2}\\s+[0-9]{2}:[0-9]{2}|[A-Za-z]{3}\\s+[0-9]{1,2}\\s+[0-9]{4}")
     file <- strex(z, "[A-Za-z0-9._-]+$")
     tmp <- list(perm = perm, dir = dir, group = group, size = size,

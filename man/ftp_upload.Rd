@@ -11,7 +11,7 @@ ftp_upload(url, path, verbose = FALSE, ...)
 
 \item{path}{(character) path}
 
-\item{verbose}{(logical) verbose messages}
+\item{verbose}{(logical) verbose messages. Default: \code{FALSE}}
 
 \item{...}{further args passed on to \pkg{curl}}
 }

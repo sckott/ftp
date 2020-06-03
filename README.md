@@ -17,7 +17,7 @@ See the ftp info vignette [ftp-information](https://docs.ropensci.org/ftp/articl
 
 
 ```r
-devtools::install_github("ropensci/ftp")
+remotes::install_github("ropensci/ftp")
 ```
 
 

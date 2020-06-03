@@ -20,7 +20,7 @@
 #' utils::read.delim(file, sep = ",", nrows = 10, header = FALSE)
 #' unlink(file) # cleanup
 #' 
-#' # stream
+#' # stream - NOT WORKING QUITE YET
 #' lst <- c()
 #' fun <- function(x) lst <<- c(lst, x)
 #' ftp_fetch(url, stream = fun)

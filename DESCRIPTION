@@ -3,7 +3,7 @@ Type: Package
 Title: File Transfer Protocol (FTP) client for R
 Description: Tools to work with any File Transfer Protocol 
     (FTP) server.
-Version: 0.0.4.9210
+Version: 0.0.5.91
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus+r@gmail.com")
 License: MIT + file LICENSE
@@ -12,6 +12,8 @@ URL: https://github.com/ropensci/ftp
 BugReports: https://github.com/ropensci/ftp/issues
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
+Encoding: UTF-8
+Language: en-US
 Imports:
     R6,
     curl,
@@ -21,4 +23,4 @@ Imports:
 Suggests:
     knitr,
     rmarkdown
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.0

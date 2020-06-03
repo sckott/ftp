@@ -37,6 +37,7 @@ List files on remote server
 }
 }
 \examples{
+\dontrun{
 (x <- ftp_client("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
 x$pwd()
 x$list()
@@ -62,7 +63,8 @@ x <- ftp_client("ftp://speedtest.tele2.net/")
 x$cd('upload')
 x$list()
 f <- tempfile(fileext = ".txt")
-writeLines("foo\\nbar\\n", con = f)
+writeLines("foo\nbar\n", con = f)
 readLines(f)
 res <- x$put(f, TRUE)
+}
 }

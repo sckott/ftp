@@ -30,6 +30,26 @@ devtools::install_github("ropensci/ftp")
 library('ftp')
 ```
 
+## list files
+
+```{r eval=FALSE}
+ftp_list("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/")
+ftp_list("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/")
+ftp_list("ftp://ftp.ncdc.noaa.gov/pub/data/noaa/2014/")
+# just list files
+ftp_list("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/", just_list = TRUE)
+```
+
+## fetch files
+
+```{r eval=FALSE}
+url <- "ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/by_year/1882.csv.gz"
+file <- tempfile(fileext = ".csv.gz")
+ftp_fetch(url, disk = file)
+utils::read.delim(file, sep = ",", nrows = 10, header = FALSE)
+unlink(file) # cleanup
+```
+
 ## ftp client
 
 Wraps an R6 method `FTPClient`
@@ -46,13 +66,13 @@ x$set_pasv()
 ```
 
 
-## pwd
+pwd, working directory
 
 ```{r}
 x$pwd()
 ```
 
-## list files
+list files
 
 ```{r}
 x$list()
@@ -66,4 +86,4 @@ x$list()
 * Please [report any issues or bugs](https://github.com/ropensci/ftp/issues).
 * License: MIT
 * Get citation information for `ftp` in R doing `citation(package = 'ftp')`
-* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.

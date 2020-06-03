@@ -29,7 +29,7 @@
 #'   }
 #' @format NULL
 #' @usage NULL
-#' @examples
+#' @examples \dontrun{
 #' (x <- ftp_client("ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/"))
 #' x$pwd()
 #' x$list()
@@ -58,6 +58,7 @@
 #' writeLines("foo\nbar\n", con = f)
 #' readLines(f)
 #' res <- x$put(f, TRUE)
+#' }
 ftp_client <- function(url) FTPClient$new(url = url)
 
 # the client

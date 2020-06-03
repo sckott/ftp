@@ -18,7 +18,7 @@ An FTP client for R
 
 The File Transfer Protocol (FTP) is a standard network protocol used for the transfer of computer files from a server to a client using the Client–server model on a computer network.
 
-See the ftp info vignette (`ftp-information`) for detailed FTP information.
+See the ftp info vignette [ftp-information](https://docs.ropensci.org/ftp/articles/ftp-information.html) for detailed FTP information.
 
 ## Installation
 

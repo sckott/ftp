@@ -3,7 +3,7 @@ ftp
 
 
 
-[![Build Status](https://travis-ci.org/ropensci/ftp.svg?branch=master)](https://travis-ci.org/ropensci/ftp)
+[![Build Status](https://travis-ci.org/sckott/ftp.svg?branch=master)](https://travis-ci.org/sckott/ftp)
 
 An FTP client for R
 
@@ -11,13 +11,13 @@ An FTP client for R
 
 The File Transfer Protocol (FTP) is a standard network protocol used for the transfer of computer files from a server to a client using the Client–server model on a computer network.
 
-See the ftp info vignette [ftp-information](https://docs.ropensci.org/ftp/articles/ftp-information.html) for detailed FTP information.
+See the ftp info vignette for detailed FTP information.
 
 ## Installation
 
 
 ```r
-remotes::install_github("ropensci/ftp")
+remotes::install_github("sckott/ftp")
 ```
 
 
@@ -105,7 +105,7 @@ x$list()
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropensci/ftp/issues).
+* Please [report any issues or bugs](https://github.com/sckott/ftp/issues).
 * License: MIT
 * Get citation information for `ftp` in R doing `citation(package = 'ftp')`
 * Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
